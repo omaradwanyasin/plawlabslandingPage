@@ -1,5 +1,6 @@
 "use client"
 
+import { useState } from "react"; // Import useState for managing modal state
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
@@ -13,8 +14,23 @@ import RetroGrid from "@/components/magicui/retro-grid"
 // import { NostalgiaPage } from "./nostalgia-section/page";
 
 export default function IndexPage() {
+  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
+  const [email, setEmail] = useState(""); // State for email input
+  const [message, setMessage] = useState(""); // State for message input
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission logic here (e.g., send data to an API)
+    console.log("Email:", email);
+    console.log("Message:", message);
+    setIsModalOpen(false); // Close the modal after submission
+  };
+
   return (
-    <section className="container grid items-center gap-6 pb-8 pt-6 md:py-10 mx-auto justify-center mt-20">
+    <section
+      id="top"
+      className="container grid items-center gap-6 pb-8 pt-6 md:py-10 mx-auto justify-center mt-20"
+    >
       <div className="flex max-w-[980px] flex-col items-center gap-6 retro-theme relative">
         <div
           className={cn(
@@ -27,7 +43,7 @@ export default function IndexPage() {
           </AnimatedShinyText>
         </div>
         <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-pixel font-bold leading-tight tracking-wider text-accent-foreground text-center z-10">
-          where Innovation Meets Execution{" "}
+          where innovation meets execution{" "}
           <p className="underline decoration-gray-400 decoration-4 underline-offset-2 mt-0 lg:mt-3 md:mt-0 sm:mt-0 z-10">
             from an idea to execution: the plawlabs journey . 🧩
           </p>
@@ -38,23 +54,79 @@ export default function IndexPage() {
       </div>
       <RetroGrid className="z-0 absolute inset-0 max-w-[1000]" />
       <div className="flex gap-4 justify-center">
-        <Link
-          href={siteConfig.links.docs}
-          target="_blank"
-          rel="noreferrer"
+        <button
+          onClick={() => setIsModalOpen(true)} // Open modal on button click
           className={buttonVariants()}
         >
           contact us
-        </Link>
+        </button>
         <Link
-          target="_blank"
-          rel="noreferrer"
-          href={siteConfig.links.github}
+          href="#join-plawlabs-movement" // Change this to the ID of the section
           className={buttonVariants({ variant: "outline" })}
         >
-          GitHub
+          sorana beta
         </Link>
       </div>
+
+      {/* Modal for Contact Form */}
+      {isModalOpen && (
+        <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-50">
+          <div className="bg-white dark:bg-black rounded-lg p-6 shadow-lg w-11/12 md:w-1/3">
+            <h2 className="text-xl font-bold text-center text-accent-foreground mb-4">
+              Contact Us
+            </h2>
+            <p className="text-center text-sm text-accent-foreground mb-4">
+              You can also reach us at: <strong>hello@plawlabs.org</strong>
+            </p>
+            <form onSubmit={handleSubmit}>
+              <div className="mb-4">
+                <label
+                  className="block text-sm text-accent-foreground mb-1"
+                  htmlFor="email"
+                >
+                  Email
+                </label>
+                <input
+                  type="email"
+                  id="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600"
+                />
+              </div>
+              <div className="mb-4">
+                <label
+                  className="block text-sm text-accent-foreground mb-1"
+                  htmlFor="message"
+                >
+                  Message
+                </label>
+                <textarea
+                  id="message"
+                  value={message}
+                  onChange={(e) => setMessage(e.target.value)}
+                  required
+                  className="w-full p-2 border border-gray-300 rounded-lg dark:bg-gray-800 dark:border-gray-600"
+                  rows="4"
+                />
+              </div>
+              <div className="flex justify-center">
+                <button type="submit" className={buttonVariants()}>
+                  Send
+                </button>
+                <button
+                  type="button"
+                  onClick={() => setIsModalOpen(false)} // Close modal
+                  className="ml-2 bg-gray-300 text-black font-medium py-2 px-4 rounded-lg shadow hover:bg-opacity-80 transition"
+                >
+                  Cancel
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      )}
     </section>
   )
 }

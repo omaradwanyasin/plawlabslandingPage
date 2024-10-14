@@ -6,9 +6,7 @@ export default function GameCard() {
       <h2 className="font-heading text-4xl leading-[1.1] sm:text-6xl md:text-3xl lg:text-5xl font-bold">
         our projects
       </h2>
-      <p className="text-muted-foreground max-w-[85%] pb-1 sm:pb-1 lg:pb-10 leading-normal sm:text-lg sm:leading-7">
-        i will add some text here
-      </p>
+      <p className="text-muted-foreground max-w-[85%] pb-1 sm:pb-1 lg:pb-10 leading-normal sm:text-lg sm:leading-7"></p>
 
       <MagicContainer
         className={

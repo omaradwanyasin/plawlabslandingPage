@@ -1,49 +1,48 @@
-"use client";
+"use client"
 
-import { cn } from "@/lib/utils";
-import { AnimatedList } from "@/components/magicui/animated-list";
+import { cn } from "@/lib/utils"
+import { AnimatedList } from "@/components/magicui/animated-list"
 
 interface Item {
-  name: string;
-  description: string;
-  icon: string;
-  color: string;
-  time: string;
+  name: string
+  description: string
+  icon: string
+  color: string
+  time: string
 }
 
 let notifications = [
   {
-    name: "battleman entered into game",
-    description: "Retro",
-    time: "15m ago",
-
-    icon: "💸",
+    name: "Reclaiming the Internet",
+    description:
+      "With Sorana, we’re rebuilding a web where data is yours and privacy is a right.",
+    icon: "🌐",
     color: "#00C9A7",
   },
   {
-    name: "battleman won 20 points",
-    description: "Retro",
-    time: "10m ago",
-    icon: "👤",
+    name: "Innovative Technology",
+    description:
+      "Nexus and Orbit set new standards with ad-free browsing and borderless connectivity.",
+    icon: "🚀",
     color: "#FFB800",
   },
   {
-    name: "Battleman exited",
-    description: "Retro",
-    time: "5m ago",
-    icon: "💬",
-    color: "#FF3D71",
-  },
-  {
-    name: "Battleman has received a new req",
-    description: "Retro",
-    time: "2m ago",
-    icon: "🗞️",
+    name: "Earn While You Browse",
+    description:
+      "Our Mesh-to-Earn model rewards you for every interaction, turning time into value.",
+    icon: "💸",
     color: "#1E86FF",
   },
-];
+  {
+    name: "True AGI is Coming",
+    description:
+      "Clade AI anticipates your needs and acts, creating a seamless future.",
+    icon: "🧠",
+    color: "#FF3D71",
+  },
+]
 
-notifications = Array.from({ length: 10 }, () => notifications).flat();
+notifications = Array.from({ length: 10 }, () => notifications).flat()
 
 const Notification = ({ name, description, icon, color, time }: Item) => {
   return (
@@ -55,7 +54,7 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
         // light styles
         "bg-white [box-shadow:0_0_0_1px_rgba(0,0,0,.03),0_2px_4px_rgba(0,0,0,.05),0_12px_24px_rgba(0,0,0,.05)]",
         // dark styles
-        "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]",
+        "transform-gpu dark:bg-transparent dark:backdrop-blur-md dark:[border:1px_solid_rgba(255,255,255,.1)] dark:[box-shadow:0_-20px_80px_-20px_#ffffff1f_inset]"
       )}
     >
       <div className="flex flex-row items-center gap-3">
@@ -79,8 +78,8 @@ const Notification = ({ name, description, icon, color, time }: Item) => {
         </div>
       </div>
     </figure>
-  );
-};
+  )
+}
 
 export default function AnimatedListDemo() {
   return (
@@ -91,5 +90,5 @@ export default function AnimatedListDemo() {
         ))}
       </AnimatedList>
     </div>
-  );
+  )
 }
