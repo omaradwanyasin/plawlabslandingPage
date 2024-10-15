@@ -26,13 +26,42 @@ export default function RootLayout({ children }: RootLayoutProps) {
   const [isModalOpen, setIsModalOpen] = useState(false) // State for modal visibility
   const [name, setName] = useState("") // State for name input
   const [email, setEmail] = useState("") // State for email input
+  const [message, setMessage] = useState("") // State for feedback message
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle form submission logic here (e.g., send data to an API)
-    console.log("Name:", name)
-    console.log("Email:", email)
-    setIsModalOpen(false) // Close the modal after submission
+
+    // Prepare the data to be sent
+    const data = {
+      username: name,
+      email: email,
+    }
+
+    try {
+      const response = await fetch(
+        "https://soranaapi.replit.app/voting/betauser",
+        {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        }
+      )
+
+      const result = await response.json()
+
+      if (response.ok) {
+        setMessage("User added successfully") // Set success message
+        setIsModalOpen(false) // Close the modal after submission
+      } else {
+        setMessage(result.message || "An error occurred") // Set error message
+      }
+    } catch (error) {
+      console.error("Error:", error)
+      setMessage("An error occurred while sending the request.") // Set error message
+    }
   }
 
   return (
@@ -177,9 +206,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
                 >
                   → join the sorana beta
                 </button>
-                <a href="#" className={buttonVariants()}>
-                  subscribe for updates
-                </a>
               </div>
               <div className="text-center text-sm text-accent-foreground">
                 <h3 className="font-bold">contact & locations</h3>
@@ -245,6 +271,11 @@ export default function RootLayout({ children }: RootLayoutProps) {
                       </button>
                     </div>
                   </form>
+                  {message && (
+                    <p className="text-center text-sm text-accent-foreground mt-4">
+                      {message}
+                    </p>
+                  )}
                 </div>
               </div>
             )}

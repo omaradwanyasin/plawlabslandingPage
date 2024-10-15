@@ -13,30 +13,30 @@ interface Item {
 
 let notifications = [
   {
-    name: "Reclaiming the Internet",
+    name: "reclaiming the internet",
     description:
-      "With Sorana, we’re rebuilding a web where data is yours and privacy is a right.",
+      "with sorana, we’re rebuilding a web where data is yours and privacy is a right.",
     icon: "🌐",
     color: "#00C9A7",
   },
   {
-    name: "Innovative Technology",
+    name: "innovative technology",
     description:
-      "Nexus and Orbit set new standards with ad-free browsing and borderless connectivity.",
+      "nexus and orbit set new standards with ad-free browsing and borderless connectivity.",
     icon: "🚀",
     color: "#FFB800",
   },
   {
-    name: "Earn While You Browse",
+    name: "earn while you browse",
     description:
-      "Our Mesh-to-Earn model rewards you for every interaction, turning time into value.",
+      "our msh-to-earn model rewards you for every interaction, turning time into value.",
     icon: "💸",
     color: "#1E86FF",
   },
   {
-    name: "True AGI is Coming",
+    name: "true agi is coming",
     description:
-      "Clade AI anticipates your needs and acts, creating a seamless future.",
+      "clade ai anticipates your needs and acts, creating a seamless future.",
     icon: "🧠",
     color: "#FF3D71",
   },

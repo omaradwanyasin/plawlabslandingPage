@@ -1,6 +1,7 @@
 "use client"
 
-import { useState } from "react"; // Import useState for managing modal state
+import { useState } from "react"
+// Import useState for managing modal state
 import Link from "next/link"
 import { ArrowRightIcon } from "lucide-react"
 
@@ -14,17 +15,17 @@ import RetroGrid from "@/components/magicui/retro-grid"
 // import { NostalgiaPage } from "./nostalgia-section/page";
 
 export default function IndexPage() {
-  const [isModalOpen, setIsModalOpen] = useState(false); // State for modal visibility
-  const [email, setEmail] = useState(""); // State for email input
-  const [message, setMessage] = useState(""); // State for message input
+  const [isModalOpen, setIsModalOpen] = useState(false) // State for modal visibility
+  const [email, setEmail] = useState("") // State for email input
+  const [message, setMessage] = useState("") // State for message input
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault()
     // Handle form submission logic here (e.g., send data to an API)
-    console.log("Email:", email);
-    console.log("Message:", message);
-    setIsModalOpen(false); // Close the modal after submission
-  };
+    console.log("Email:", email)
+    console.log("Message:", message)
+    setIsModalOpen(false) // Close the modal after submission
+  }
 
   return (
     <section
@@ -38,18 +39,18 @@ export default function IndexPage() {
           )}
         >
           <AnimatedShinyText className="inline-flex items-center justify-center px-4 py-1 transition ease-out hover:text-black hover:duration-300 hover:dark:text-black text-neutral-600 z-10">
-            <span>🕹️ introducing plawlabs</span>
+            <span>🕹️ from idea to execution</span>
             <ArrowRightIcon className="ml-1 size-3 transition-transform duration-300 ease-in-out group-hover:translate-x-0.5" />
           </AnimatedShinyText>
         </div>
         <h1 className="text-3xl sm:text-3xl md:text-4xl lg:text-5xl font-pixel font-bold leading-tight tracking-wider text-accent-foreground text-center z-10">
           where innovation meets execution{" "}
-          <p className="underline decoration-gray-400 decoration-4 underline-offset-2 mt-0 lg:mt-3 md:mt-0 sm:mt-0 z-10">
-            from an idea to execution: the plawlabs journey . 🧩
+          <p className=" mt-0 lg:mt-3 md:mt-0 sm:mt-0 z-10">
+            meet the plawlabs journey 🧩
           </p>
         </h1>
         <p className="max-w-[700px] text-lg sm:text-xl text-accent-foreground text-center z-10">
-          we’re not here to fit into the future we’re here to build it.
+          we’re not here to fit into the future, we’re here to build it.
         </p>
       </div>
       <RetroGrid className="z-0 absolute inset-0 max-w-[1000]" />
